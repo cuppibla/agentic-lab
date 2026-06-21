@@ -1,0 +1,54 @@
+---
+title: Agentic Lab
+description: A hands-on catalog of agentic system patterns and demos by Annie (cuppibla).
+template: splash
+hero:
+  tagline: A hands-on catalog of agentic system patterns — and the demos that prove them out.
+  actions:
+    - text: Browse the gallery
+      link: /agentic-lab/gallery/
+      icon: right-arrow
+    - text: Learn by concept
+      link: /agentic-lab/concepts/
+      variant: minimal
+    - text: Star on GitHub
+      link: https://github.com/cuppibla/agentic-lab
+      icon: github
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## Two ways in
+
+<CardGrid>
+	<Card title="Learn by concept" icon="open-book">
+		A path through agentic systems — fundamentals, tools, memory, multi-agent, evals — each
+		linked to the demos that show it. [Start the path →](/concepts/)
+	</Card>
+	<Card title="See the work" icon="laptop">
+		Every demo, public and private, filterable by concept and stack.
+		[Open the gallery →](/gallery/)
+	</Card>
+</CardGrid>
+
+## Featured
+
+<CardGrid>
+	<Card title="ADK 2.0 Marathon Planner" icon="rocket">
+		Graph workflow with parallel fetches, deterministic routing, structured agents.
+		[Code →](https://github.com/cuppibla/adk-2-marathon-demo)
+	</Card>
+	<Card title="Agent Marketplace (A2A + MCP)" icon="puzzle">
+		Four agents collaborating via Agent Registry, no hardcoded URLs.
+		[Code →](https://github.com/cuppibla/agent_marketplace_demo)
+	</Card>
+	<Card title="Reflective Memory" icon="star">
+		Memory consolidation via a nightly “dream” on Vertex AI Memory Bank.
+		[Case study →](/case-studies/reflective-memory/)
+	</Card>
+	<Card title="Aria" icon="heart">
+		A voice assistant that browses the web for you, built for accessibility.
+		[Case study →](/case-studies/aria/)
+	</Card>
+</CardGrid>

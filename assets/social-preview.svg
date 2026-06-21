@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640" role="img" aria-label="Agentic Lab">
+  <rect width="1280" height="640" fill="#0d0b1a"/>
+  <rect x="0" y="0" width="1280" height="6" fill="#6d6aff"/>
+  <text x="640" y="280" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="96" font-weight="700"><tspan fill="#6d6aff">Agentic</tspan><tspan fill="#f4f3fb"> Lab</tspan></text>
+  <text x="640" y="338" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="30" fill="#9d9ac4">A hands-on catalog of agentic-system patterns &amp; demos</text>
+  <g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="20">
+    <rect x="305" y="402" width="118" height="46" rx="23" fill="#181433" stroke="#6d6aff" stroke-opacity="0.5"/>
+    <text x="364" y="431" text-anchor="middle" fill="#c9c7f5">Tool use</text>
+    <rect x="437" y="402" width="138" height="46" rx="23" fill="#181433" stroke="#6d6aff" stroke-opacity="0.5"/>
+    <text x="506" y="431" text-anchor="middle" fill="#c9c7f5">Multi-agent</text>
+    <rect x="589" y="402" width="84" height="46" rx="23" fill="#181433" stroke="#6d6aff" stroke-opacity="0.5"/>
+    <text x="631" y="431" text-anchor="middle" fill="#c9c7f5">MCP</text>
+    <rect x="687" y="402" width="82" height="46" rx="23" fill="#181433" stroke="#6d6aff" stroke-opacity="0.5"/>
+    <text x="728" y="431" text-anchor="middle" fill="#c9c7f5">RAG</text>
+    <rect x="783" y="402" width="112" height="46" rx="23" fill="#181433" stroke="#6d6aff" stroke-opacity="0.5"/>
+    <text x="839" y="431" text-anchor="middle" fill="#c9c7f5">Memory</text>
+  </g>
+  <text x="640" y="560" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="26" fill="#6d6aff">cuppibla.github.io/agentic-lab</text>
+</svg>

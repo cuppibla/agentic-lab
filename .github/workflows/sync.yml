@@ -1,0 +1,36 @@
+name: Sync demos from GitHub topics
+
+on:
+  schedule:
+    - cron: '0 6 * * 1' # Mondays 06:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - name: Regenerate registry + README from tagged repos
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          node scripts/sync-repos.mjs cuppibla
+          npm run gen:readme
+      - name: Commit if changed
+        run: |
+          if [[ -n "$(git status --porcelain src/data/demos.generated.ts README.md)" ]]; then
+            git config user.name "cuppibla"
+            git config user.email "35478020+cuppibla@users.noreply.github.com"
+            git add src/data/demos.generated.ts README.md
+            git commit -m "chore: refresh demos + README from GitHub topics"
+            git push
+          else
+            echo "No changes."
+          fi

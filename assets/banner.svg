@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 320" width="1280" height="320" role="img" aria-label="Agentic Lab">
+  <rect width="1280" height="320" fill="#0d0b1a"/>
+  <rect x="0" y="0" width="1280" height="4" fill="#6d6aff"/>
+  <text x="640" y="150" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="68" font-weight="700"><tspan fill="#6d6aff">Agentic</tspan><tspan fill="#f4f3fb"> Lab</tspan></text>
+  <text x="640" y="194" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="23" fill="#9d9ac4">A hands-on catalog of agentic-system patterns &amp; demos</text>
+  <g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="18">
+    <rect x="313" y="232" width="110" height="40" rx="20" fill="#181433" stroke="#6d6aff" stroke-opacity="0.5"/>
+    <text x="368" y="258" text-anchor="middle" fill="#c9c7f5">Tool use</text>
+    <rect x="437" y="232" width="130" height="40" rx="20" fill="#181433" stroke="#6d6aff" stroke-opacity="0.5"/>
+    <text x="502" y="258" text-anchor="middle" fill="#c9c7f5">Multi-agent</text>
+    <rect x="581" y="232" width="78" height="40" rx="20" fill="#181433" stroke="#6d6aff" stroke-opacity="0.5"/>
+    <text x="620" y="258" text-anchor="middle" fill="#c9c7f5">MCP</text>
+    <rect x="673" y="232" width="76" height="40" rx="20" fill="#181433" stroke="#6d6aff" stroke-opacity="0.5"/>
+    <text x="711" y="258" text-anchor="middle" fill="#c9c7f5">RAG</text>
+    <rect x="763" y="232" width="104" height="40" rx="20" fill="#181433" stroke="#6d6aff" stroke-opacity="0.5"/>
+    <text x="815" y="258" text-anchor="middle" fill="#c9c7f5">Memory</text>
+    <rect x="881" y="232" width="86" height="40" rx="20" fill="#181433" stroke="#6d6aff" stroke-opacity="0.5"/>
+    <text x="924" y="258" text-anchor="middle" fill="#c9c7f5">Evals</text>
+  </g>
+</svg>

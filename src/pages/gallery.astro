@@ -1,0 +1,83 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import DemoCard from '../components/DemoCard.astro';
+import { demos } from '../data/demos';
+import { concepts } from '../data/concepts';
+
+const sorted = [...demos].sort((a, b) => {
+  if (!!b.featured !== !!a.featured) return b.featured ? 1 : -1;
+  if ((b.stars ?? 0) !== (a.stars ?? 0)) return (b.stars ?? 0) - (a.stars ?? 0);
+  return a.title.localeCompare(b.title);
+});
+const usedConcepts = concepts.filter((c) => demos.some((d) => d.concepts.includes(c.id)));
+---
+
+<StarlightPage
+  frontmatter={{
+    title: 'Demo gallery',
+    description: 'Every agentic demo, filterable by concept and access level.',
+  }}
+>
+  <p>Every demo in one place — filter by concept or by how you can access it.</p>
+
+  <div class="filter-bar" data-filter-group="status">
+    <span class="filter-label">Access</span>
+    <button class="filter-btn" data-filter="all" aria-pressed="true">All</button>
+    <button class="filter-btn" data-filter="public" aria-pressed="false">Public</button>
+    <button class="filter-btn" data-filter="private" aria-pressed="false">Private</button>
+    <button class="filter-btn" data-filter="local" aria-pressed="false">Local</button>
+  </div>
+
+  <div class="filter-bar" data-filter-group="concept">
+    <span class="filter-label">Concept</span>
+    <button class="filter-btn" data-filter="all" aria-pressed="true">All</button>
+    {
+      usedConcepts.map((c) => (
+        <button class="filter-btn" data-filter={c.id} aria-pressed="false">
+          {c.label}
+        </button>
+      ))
+    }
+  </div>
+
+  <p class="filter-count"><span id="visible-count">{sorted.length}</span> demos</p>
+
+  <ul class="demo-grid" id="demo-grid">
+    {sorted.map((d) => <DemoCard demo={d} />)}
+  </ul>
+</StarlightPage>
+
+<script>
+  const grid = document.getElementById('demo-grid');
+  const cards = Array.from(grid?.querySelectorAll<HTMLElement>('.demo-card') ?? []);
+  const countEl = document.getElementById('visible-count');
+  const state: { status: string; concept: string } = { status: 'all', concept: 'all' };
+
+  function apply() {
+    let visible = 0;
+    for (const el of cards) {
+      const status = el.dataset.status ?? '';
+      const conceptList = (el.dataset.concepts ?? '').split(' ');
+      const okStatus = state.status === 'all' || status === state.status;
+      const okConcept = state.concept === 'all' || conceptList.includes(state.concept);
+      const show = okStatus && okConcept;
+      el.style.display = show ? '' : 'none';
+      if (show) visible++;
+    }
+    if (countEl) countEl.textContent = String(visible);
+  }
+
+  for (const bar of document.querySelectorAll<HTMLElement>('[data-filter-group]')) {
+    const group = bar.dataset.filterGroup as 'status' | 'concept';
+    bar.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      const btn = target.closest<HTMLElement>('.filter-btn');
+      if (!btn) return;
+      state[group] = btn.dataset.filter ?? 'all';
+      for (const b of bar.querySelectorAll('.filter-btn')) {
+        b.setAttribute('aria-pressed', String(b === btn));
+      }
+      apply();
+    });
+  }
+</script>

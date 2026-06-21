@@ -1,0 +1,48 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { conceptGroups, concepts } from '../../data/concepts';
+import { demos } from '../../data/demos';
+import { withBase } from '../../utils/base';
+
+function count(id: string) {
+  return demos.filter((d) => d.concepts.includes(id)).length;
+}
+---
+
+<StarlightPage
+  frontmatter={{
+    title: 'By concept',
+    description: 'A learning path through agentic systems, each concept linked to demos.',
+  }}
+>
+  <p>
+    A learning path through agentic systems — each concept links to the demos that show it in
+    action.
+  </p>
+
+  {
+    conceptGroups.map((group) => (
+      <section class="concept-group">
+        <h2 class="concept-group__title">{group}</h2>
+        <ul class="demo-grid">
+          {concepts
+            .filter((c) => c.group === group)
+            .map((c) => (
+              <li class="demo-card">
+                <div class="demo-card__head">
+                  <h3 class="demo-card__title">
+                    <a href={withBase(`/concepts/${c.id}/`)}>{c.label}</a>
+                  </h3>
+                  <span class="demo-card__muted">{count(c.id)}</span>
+                </div>
+                <p class="demo-card__oneliner">{c.blurb}</p>
+                <div class="demo-card__foot">
+                  <a href={withBase(`/concepts/${c.id}/`)}>See demos →</a>
+                </div>
+              </li>
+            ))}
+        </ul>
+      </section>
+    ))
+  }
+</StarlightPage>

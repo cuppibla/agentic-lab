@@ -1,0 +1,29 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import DemoCard from '../../components/DemoCard.astro';
+import { concepts, conceptMap } from '../../data/concepts';
+import { demos } from '../../data/demos';
+import { withBase } from '../../utils/base';
+
+export function getStaticPaths() {
+  return concepts.map((c) => ({ params: { concept: c.id } }));
+}
+
+const { concept } = Astro.params;
+const meta = conceptMap.get(concept!);
+const list = demos.filter((d) => d.concepts.includes(concept!));
+---
+
+<StarlightPage
+  frontmatter={{
+    title: meta?.label ?? concept!,
+    description: meta?.blurb,
+  }}
+>
+  <p>{meta?.blurb}</p>
+  <p><a href={withBase('/concepts/')}>← All concepts</a></p>
+
+  <ul class="demo-grid">
+    {list.map((d) => <DemoCard demo={d} />)}
+  </ul>
+</StarlightPage>

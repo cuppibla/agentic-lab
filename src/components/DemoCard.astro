@@ -1,0 +1,40 @@
+---
+import type { Demo } from '../data/demos';
+import { conceptLabel } from '../data/concepts';
+import { withBase } from '../utils/base';
+
+interface Props {
+  demo: Demo;
+}
+const { demo } = Astro.props;
+const statusText: Record<Demo['status'], string> = {
+  public: 'Public',
+  private: 'Private',
+  local: 'Local',
+};
+const hasLink = demo.repo || demo.demo || demo.video || demo.writeup;
+---
+
+<li class="demo-card" data-status={demo.status} data-concepts={demo.concepts.join(' ')}>
+  <div class="demo-card__head">
+    <h3 class="demo-card__title">{demo.title}</h3>
+    <span class={`badge badge--${demo.status}`}>{statusText[demo.status]}</span>
+  </div>
+  <p class="demo-card__oneliner">{demo.oneliner}</p>
+  <ul class="chips">
+    {demo.concepts.map((c) => <li class="chip">{conceptLabel(c)}</li>)}
+    {demo.stack.map((s) => <li class="chip chip--stack">{s}</li>)}
+  </ul>
+  <div class="demo-card__foot">
+    {demo.repo && <a href={demo.repo} target="_blank" rel="noopener">Code →</a>}
+    {demo.demo && <a href={demo.demo} target="_blank" rel="noopener">Live demo →</a>}
+    {demo.video && <a href={demo.video} target="_blank" rel="noopener">Video →</a>}
+    {demo.writeup && <a href={withBase(demo.writeup)}>Case study →</a>}
+    {!hasLink && (
+      <span class="demo-card__muted">
+        {demo.status === 'private' ? 'Private · write-up coming' : 'Local · write-up coming'}
+      </span>
+    )}
+    {demo.stars ? <span class="demo-card__muted">★ {demo.stars}</span> : null}
+  </div>
+</li>
