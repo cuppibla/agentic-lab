@@ -111,7 +111,7 @@ export const memoryArtifacts: MemoryArtifact[] = [
   {
     title: 'Build a Multimodal AI Agent with Graph RAG, ADK & Memory Bank',
     kind: 'codelab', platform: 'codelabs', channel: 'Google Codelabs',
-    oneliner: `Long-term memory with Vertex AI Memory Bank in a multi-agent Graph-RAG app.`,
+    oneliner: `Long-term memory with Vertex AI Memory Bank in a multi-agent Graph-RAG app — my Level 2 of the Way Back Home series.`,
     url: 'https://codelabs.developers.google.com/codelabs/survivor-network/instructions',
     products: ['ADK', 'Memory Bank'],
     themes: ['RAG', 'Memory Bank'], featured: true,
@@ -131,30 +131,6 @@ export const memoryArtifacts: MemoryArtifact[] = [
     url: 'https://codelabs.developers.google.com/codelabs/christmas-card/instructions',
     products: ['ADK', 'Memory Bank'],
     themes: ['Memory Bank'],
-  },
-  {
-    title: 'Way Back Home — L0 (identity & state)',
-    kind: 'codelab', platform: 'codelabs', channel: 'Google Codelabs',
-    oneliner: `Level 0 — agent identity and state foundations.`,
-    url: 'https://codelabs.developers.google.com/way-back-home-level-0/instructions',
-    products: ['ADK'],
-    themes: ['Sessions & State', 'Runtime'],
-  },
-  {
-    title: 'Way Back Home — L1 (orchestration)',
-    kind: 'codelab', platform: 'codelabs', channel: 'Google Codelabs',
-    oneliner: `Level 1 — multi-agent orchestration at runtime.`,
-    url: 'https://codelabs.developers.google.com/way-back-home-level-1/instructions',
-    products: ['ADK'],
-    themes: ['Runtime'],
-  },
-  {
-    title: 'Way Back Home — L3 (bidirectional streaming)',
-    kind: 'codelab', platform: 'codelabs', channel: 'Google Codelabs',
-    oneliner: `Level 3 — real-time bidirectional streaming on Gemini Live.`,
-    url: 'https://codelabs.developers.google.com/way-back-home-level-3/instructions',
-    products: ['ADK', 'Gemini Live'],
-    themes: ['Runtime'],
   },
 
   // ---------- Videos ----------
