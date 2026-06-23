@@ -1,0 +1,55 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import MemoryCard from '../components/MemoryCard.astro';
+import { memoryArtifacts, kindOrder, type MemoryArtifact } from '../data/memory';
+
+function sortFeatured(list: MemoryArtifact[]): MemoryArtifact[] {
+  return [...list].sort((x, y) => {
+    if (!!y.featured !== !!x.featured) return y.featured ? 1 : -1;
+    if ((y.stars ?? 0) !== (x.stars ?? 0)) return (y.stars ?? 0) - (x.stars ?? 0);
+    return x.title.localeCompare(y.title);
+  });
+}
+
+const groups = kindOrder.map((g) => ({
+  ...g,
+  items: sortFeatured(memoryArtifacts.filter((a) => a.kind === g.kind)),
+}));
+const total = memoryArtifacts.length;
+---
+
+<StarlightPage
+  frontmatter={{
+    title: 'Memory & Runtime',
+    description:
+      "Everything I've built and published on agent memory, memory bank, and agent runtime — across GitHub, Google Codelabs, Google Cloud Tech, and Medium.",
+  }}
+>
+  <p>
+    Everything I've built and published on <strong>agent memory</strong>, <strong>memory bank</strong>,
+    and <strong>agent runtime</strong> — one place, across every platform: GitHub, Google Codelabs,
+    Google Cloud Tech, and Medium. <strong>{total} pieces.</strong>
+  </p>
+
+  {
+    groups.map((g) =>
+      g.items.length > 0 ? (
+        <section class="concept-group">
+          <h2 class="concept-group__title">
+            {g.label} <span class="demo-card__muted">({g.items.length})</span>
+          </h2>
+          <ul class="demo-grid">
+            {g.items.map((a) => (
+              <MemoryCard artifact={a} />
+            ))}
+          </ul>
+        </section>
+      ) : null
+    )
+  }
+
+  <p class="filter-count">
+    Also live: the O'Reilly Multimodal Bootcamp (Day 2 — Memory Bank), the Way Back Home livestream,
+    and the Next '26 developer keynote.
+  </p>
+</StarlightPage>

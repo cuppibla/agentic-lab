@@ -88,6 +88,23 @@
   border: 1px solid var(--sl-color-gray-5);
 }
 .chip--stack { color: var(--sl-color-accent-high); }
+/* Google product — highlighted chip (Memory Bank, ADK, Vertex AI, ...) */
+.chip--product {
+  background: #1a73e8;
+  border-color: #1a73e8;
+  color: #fff;
+  font-weight: 600;
+}
+.chip--product::before {
+  content: '';
+  display: inline-block;
+  width: 0.45rem;
+  height: 0.45rem;
+  margin-right: 0.35rem;
+  border-radius: 999px;
+  background: #fff;
+  vertical-align: middle;
+}
 
 .demo-card__foot {
   display: flex;
@@ -143,3 +160,10 @@
   border-bottom: 1px solid var(--sl-color-gray-5);
   padding-bottom: 0.3rem;
 }
+
+/* ---------- Channel badges (Memory & Runtime page) ---------- */
+.badge--github { background: color-mix(in srgb, #8b949e 20%, transparent); color: #c9d1d9; }
+.badge--codelabs { background: color-mix(in srgb, #4285f4 22%, transparent); color: #8ab4f8; }
+.badge--youtube { background: color-mix(in srgb, #ff0000 18%, transparent); color: #ff8a8a; }
+.badge--medium { background: color-mix(in srgb, #1d9e75 20%, transparent); color: #5dcaa5; }
+.badge--web { background: color-mix(in srgb, #7f77dd 22%, transparent); color: #afa9ec; }

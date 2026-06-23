@@ -1,0 +1,36 @@
+---
+import type { MemoryArtifact } from '../data/memory';
+import { withBase } from '../utils/base';
+
+interface Props {
+  artifact: MemoryArtifact;
+}
+const { artifact: a } = Astro.props;
+
+const linkLabel =
+  a.platform === 'web' ? 'Case study →'
+  : a.kind === 'repo' ? 'Code →'
+  : a.kind === 'codelab' ? 'Open codelab →'
+  : a.kind === 'video' ? 'Watch →'
+  : 'Read →';
+
+const external = a.platform !== 'web';
+---
+
+<li class="demo-card" data-themes={a.themes.join(' ')}>
+  <div class="demo-card__head">
+    <h3 class="demo-card__title">{a.title}</h3>
+    <span class={`badge badge--${a.platform}`}>{a.channel}</span>
+  </div>
+  <p class="demo-card__oneliner">{a.oneliner}</p>
+  <ul class="chips">
+    {a.products?.map((p) => <li class="chip chip--product">{p}</li>)}
+    {a.themes.map((t) => <li class="chip">{t}</li>)}
+  </ul>
+  <div class="demo-card__foot">
+    <a href={withBase(a.url)} {...(external ? { target: '_blank', rel: 'noopener' } : {})}>
+      {linkLabel}
+    </a>
+    {a.stars ? <span class="demo-card__muted">★ {a.stars}</span> : null}
+  </div>
+</li>

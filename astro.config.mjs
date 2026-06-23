@@ -29,6 +29,7 @@ export default defineConfig({
           items: [
             { label: 'Demo gallery', link: '/gallery/' },
             { label: 'By concept', link: '/concepts/' },
+            { label: 'Memory & Runtime', link: '/memory/' },
           ],
         },
         {
